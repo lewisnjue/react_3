@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import React from 'react';
+import PropTypes from 'prop-types'
+
+const ChildComponent = (props) =>{
+  const styleinline = {
+    background:"green",
+    color:"yellow"
+  } // -> inline css 
+  return <h1 style={styleinline}>{props.title}</h1>
+};
+
+ChildComponent.propTypes = {
+  title: PropTypes.string.isRequired
+} ;// ->  this makes sure that the title is a string 
+
+
+ChildComponent.defaultProps = {
+  title: 'Default Title'
+}; // -> this will provide a default title 
+
+
+
+
+/* class ChildComponent extends React.Component{
+  render (){
+    return <h1>{this.props.title }</h1>
+  }
+} */
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChildComponent title='lewis' />
+
   );
 }
 
